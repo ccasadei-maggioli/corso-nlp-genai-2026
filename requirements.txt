@@ -1,0 +1,39 @@
+# =============================================================================
+# Corso "NLP & Generative AI" — dipendenze di riferimento
+# =============================================================================
+# Questo file elenca le librerie usate nei notebook del corso, con versioni
+# MINIME testate. Su Google Colab NON è necessario installare tutto da qui:
+# ogni notebook contiene già le righe "!pip install ..." con ciò che serve.
+#
+# Nota su PyTorch: su Colab è GIÀ preinstallato e collegato alla GPU/CUDA,
+# quindi NON lo fissiamo qui per evitare conflitti. Se esegui in locale con
+# GPU, installa la versione di torch adatta alla tua CUDA da pytorch.org.
+# -----------------------------------------------------------------------------
+
+# --- Core Hugging Face -------------------------------------------------------
+transformers>=4.45,<5.0
+accelerate>=0.34
+huggingface_hub>=0.25
+datasets>=3.0
+sentencepiece>=0.2          # tokenizer richiesto da diversi modelli (es. mDeBERTa, e5)
+
+# --- Quantizzazione 4-bit (LLM su GPU T4) ------------------------------------
+bitsandbytes>=0.44          # richiede una GPU NVIDIA (su Colab: runtime T4)
+
+# --- Embeddings / ricerca semantica ------------------------------------------
+sentence-transformers>=3.0
+faiss-cpu>=1.8              # vector store in-memory per il RAG (nessun server)
+
+# --- LangChain (framework GenAI) ---------------------------------------------
+langchain>=0.3
+langchain-community>=0.3
+langchain-huggingface>=0.1
+langchain-text-splitters>=0.3
+
+# --- Utility -----------------------------------------------------------------
+pandas>=2.0
+scikit-learn>=1.3           # similarità coseno, metriche, utility varie
+
+# --- Solo per (ri)generare gli asset del repo (QR code) ----------------------
+# Non serve nei notebook del corso; utile solo a chi rigenera assets/.
+qrcode[pil]>=7.4
